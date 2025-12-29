@@ -11,6 +11,6 @@
 
 5. I found the contract misbehave on many points in remix, its mechanics for price of a share are sus too, I did not look much into that.
 
-#Conclusion:
+## Conclusion:
 	
-Always test the maths you use, because solidity doesn't contain a real mechanism for decimal values, and your maths may not work as intended. Test the math part rigorously. 
+***Always test the maths you use, because solidity doesn't contain a real mechanism for decimal values, and your maths may not work as intended. Test the math part rigorously.*** 
