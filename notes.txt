@@ -1,0 +1,85 @@
+
+- we have four binaries at your disposal: forge, cast, anvil, and chisel, from Foundry.
+
+- forge i think is used to initialize a foundry project.
+
+- anvil is a local blockchain, like ganache.
+
+===
+
+---forge--- 
+
+"forge build"
+
+	it is used to compile smart contracts.
+
+"
+
+
+===
+
+deploying a contract via new() gives you a reference to the contract, but you cannot call private/internal functions, only public and external ones.
+
+===
+
+- vm.startBroadcast() -> everything now is live and sent to the node
+- vm.stopBroadcast()  -> everything now is just local simulation
+
+===
+
+- The --broadcast flag tells Forge:
+
+“Actually send the transactions in this script to the blockchain (or local node). Don’t just simulate them.”
+
+===
+
+address public wallet1 = makeAddr("wallet1");
+address public wallet2 = makeAddr("wallet2");
+
+
+// Fund the specific wallet (wallet1) with some ETH using a cheatcode
+// vm.deal(wallet1, 10 ether); 
+
+
+// Use vm.prank to set the msg.sender for the next call
+// vm.prank(wallet1); 
+// Call a function in your contract, sending some value
+// The transaction will originate from 'wallet1'
+   yourContract.yourFunction{value: 1 ether}();
+
+
+===
+
+
+In Solidity, a contract cannot directly access the storage of another contract instance, even if it deployed that instance itself. Instead, you must use a function call to retrieve mapping data.
+
+
+===
+
+Use inheritance when you want to extend functionality or organize code. Use new when you need to dynamically generate multiple independent instances of a contract at runtime, such as a "Token Factory" or a "Wallet Factory"
+
+===
+
+inheritance deploys 1, new() creates another deployment
+
+===
+
+In Foundry:
+
+Each test_* function runs in complete isolation.
+
+For every test:
+
+setUp() is executed
+
+a fresh EVM snapshot is created
+
+no state is shared across tests
+
+So when you add another test_foo():
+
+previous deposits are gone
+
+previous balances are gone
+
+previous block state is gone
