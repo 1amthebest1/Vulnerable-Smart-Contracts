@@ -13,4 +13,4 @@
 
 #Conclusion:
 	
-	Always test the maths you use, because solidity doesn't contain a real mechanism for decimal values, and your maths may not work as intended. Test the math part rigorously. 
+Always test the maths you use, because solidity doesn't contain a real mechanism for decimal values, and your maths may not work as intended. Test the math part rigorously. 
